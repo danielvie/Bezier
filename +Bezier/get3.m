@@ -1,6 +1,9 @@
 function Pi = get3(C, t)
     
-    ONES = ones(numel(t), 1);
+    n    = numel(t);
+    t    = reshape(t, [n, 1]);
+    
+    ONES = ones(n, 1);
     T    = [t.^3, t.^2, t, ONES];
     M    = Bezier.get_m3();
 
