@@ -1,8 +1,8 @@
-function [Ca, T, R] = align(C)
+function [Ca, R, T] = align(C)
     
     % translacao
-    T   = -C(1,:);
-    Ca  = C + T;
+    T   = C(1,:);
+    Ca  = C - T;
     
     % rotacao
     R  = atan2(Ca(end,2), Ca(end,1));

@@ -1,13 +1,11 @@
-function T = get_t3(C, vi, dire)
+function T = get_t_from_C3(C, vi, dire)
     
     % montando polinomio
-    p1 =   -C(1,dire) + 3*C(2,dire) - 3*C(3,dire) + C(4,dire);
-    p2 =  3*C(1,dire) - 6*C(2,dire) + 3*C(3,dire);
-    p3 = -3*C(1,dire) + 3*C(2,dire);
-    p4 =    C(1,dire);
-
-    P = [p1, p2, p3, p4 - vi];
-
+    M  = Bezier.get_m3();
+    
+    P = M*C(:,dire);
+    P(end) = P(end) - vi;
+    
     % calculando raizes
     res = roots(P);
     

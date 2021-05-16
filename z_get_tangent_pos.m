@@ -24,23 +24,19 @@ function graf(rx, ry, xi, yi)
     Pi = [xi, yi];
 
     % encontrando pontos `x` e `y`
-    [xi_, tx] = Bezier.get_x3_from_y(C, Pi(2));
-    [~  , ty] = Bezier.get_y3_from_x(C, Pi(1));
+    [Py, tx] = Bezier.get_p_from_y3(C, Pi(2));
+    [Px, ty] = Bezier.get_p_from_x3(C, Pi(1));
 
     % identificando se estou abaixo ou a acima da curva
     acima = 1;
-    if xi_(end) > xi
+    if Py(end,1) > xi
         acima = 0;
     end
     
     % escolhendo valores de busca
     t1 = ty(1);
     t2 = tx(end);
-%     t1 = tx(1);
-%     t2 = tx(end);
-
-    P1 = Bezier.get3(C, t1);
-    P2 = Bezier.get3(C, t2);
+       
 
     % busca bin. ponto tangente
     a = t1;
@@ -92,8 +88,8 @@ function graf(rx, ry, xi, yi)
     plot(Pi(1), Pi(2), 'k.', 'markers', 20)
 
     % plotando intersec
-    plot(P1(1), P1(2), 'r.', 'markers', 20);
-    plot(P2(1), P2(2), 'r.', 'markers', 20);
+    plot(Px(:,1), Px(:,2), 'r.', 'markers', 20);
+    plot(Py(:,1), Py(:,2), 'r.', 'markers', 20);
 
     % plotando intemediario
     % plot(P_1(:,1), P_1(:,2), 'k+', 'linew', 2, 'markers', 10);
