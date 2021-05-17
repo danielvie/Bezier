@@ -36,8 +36,7 @@ function graf(rx, ry, xi, yi)
     % escolhendo valores de busca
     t1 = ty(1);
     t2 = tx(end);
-       
-
+    
     % busca bin. ponto tangente
     a = t1;
     b = t2;

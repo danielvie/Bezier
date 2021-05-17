@@ -20,7 +20,6 @@ C_ = align_apply(C, R, T);
 zer = get_zeros(C_);
 
 
-
 [x_, y_] = Bezier.eval(C_, 100);
 [xi, yi] = Bezier.eval(C, zer);
 

@@ -1,7 +1,8 @@
-function T = get_t_from_C3(C, vi, dire)
+function T = get_t_from_C(C, vi, dire)
     
     % montando polinomio
-    M  = Bezier.get_m3();
+    n  = size(C,1) - 1;
+    M  = Bezier.get_m(n);
     
     P = M*C(:,dire);
     P(end) = P(end) - vi;
