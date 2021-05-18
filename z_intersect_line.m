@@ -1,40 +1,65 @@
 
-C = [
-    0,0;
-    2,1;
-    5,1;
-    6,0];
-
-[x, y] = Bezier.eval(C, 100);
-
 L = [
     0, 0.1;
     6, 0.7;
 ];
 
-[lx, ly] = Bezier.eval(L, 10);
+graf(L);
 
-[~, R, T] = Bezier.align(L);
-C_ = align_apply(C, R, T);
+function update(~, event)
 
-zer = get_zeros(C_);
+    % lendo valor de `L`
+    L = evalin('caller', 'L');
+    
+    % lendo ponto do clique do mouse
+    P = event.IntersectionPoint(1:2);
 
+    % se botao esq -> atualiza ponto esq, 
+    % se botao dir -> atualiza ponto dir, 
+    if event.Button == 1
+        L(1,:) = P;
+    elseif event.Button == 3
+        L(2,:) = P;
+    end
+    
+    % atualizando valor de `L` na funcao principal
+    assignin('caller', 'L', L);
+    
+    % atualizando grafico;
+    graf(L);
+end
 
-[x_, y_] = Bezier.eval(C_, 100);
-[xi, yi] = Bezier.eval(C, zer);
+function graf(L)
+    C = [
+        0,0;
+        2,1;
+        5,1;
+        6,0];
 
+    [x, y] = Bezier.eval(C, 100);
 
-plot(x,y, 'linew', 2);hold on;
-plot(lx,ly, 'linew', 2);
+    [lx, ly] = Bezier.eval(L, 10);
 
+    [~, R, T] = Bezier.align(L);
+    C_ = align_apply(C, R, T);
 
-plot(xi, yi, 'r.', 'markers', 30);
+    zer = get_zeros(C_);
 
-hold off;
-grid on;
+    [xi, yi] = Bezier.eval(C, zer);
+
+    h = plot(x,y, 'linew', 2);hold on;
+    plot(lx,ly, 'linew', 2);
+
+    plot(xi, yi, 'r.', 'markers', 30);
+
+    hold off;
+    grid on;
+    
+    h.Parent.Parent.Children.ButtonDownFcn = @update;
+%     fig = h.Parent.Parent.Children;
+end
 
 function T = get_zeros(C)
-    
     n = size(C,1)-1;
     
     M = Bezier.get_m(n);
