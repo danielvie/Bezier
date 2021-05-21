@@ -67,6 +67,9 @@ function graf(C, P)
     axis equal    
     hold off;
     
+    txt = sprintf('P: [%.1f, %.1f], Pi: [%.1f, %.1f]', P(1), P(2), Pi(1), Pi(2));
+    title(txt);
+    
     h.Parent.ButtonDownFcn = @(ax, event) update(ax, event, C);
 end
 
