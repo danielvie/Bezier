@@ -11,7 +11,7 @@ R.y = r.h'/1000;
 rx = R.x;
 ry = R.y;
 
-C = Bezier.fit(rx, ry, 4);
+C = Bezier.fit(rx, ry, 5);
 
 [x, y] = Bezier.eval(C, 100);
 

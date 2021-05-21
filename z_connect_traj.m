@@ -18,7 +18,7 @@ C = Bezier.fit(rx, ry, 3);
 
 
 % posicao corpo
-pos = [48, 30];
+pos = [40, 40];
 
 % ponto de encontro
 [pe, te] = Bezier.get_p_from_x(C, 55);
@@ -27,7 +27,7 @@ ey = pe(2);
 
 % tangente ponto de encontro
 [tx, ty] = Bezier.tangent(C, te);
-k = 7;
+k = 5;
 tx = tx*k;
 ty = ty*k;
 
@@ -60,6 +60,8 @@ plot([ex, ex + tx], [ey, ey + ty], 'color', '#7AA721', 'linew', 2);
 
 % plot traj_
 plot(x_, y_, 'linew', 2);
+
+plot(P_(:,1), P_(:,2), '.r', 'markers', 25);
 
 hold off;
 axis equal;
