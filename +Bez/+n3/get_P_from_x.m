@@ -1,10 +1,10 @@
 function [Pi, n, Ti] = get_P_from_x(C, xi)
 
     % lendo valor de `T`
-    [Ti, n] = Bez.get_t_from_C(C, xi, 1);
+    [Ti, n] = Bez.n3.get_t_from_C(C, xi, 1);
     
     % calculando y
-    Pi = Bez.get_P_from_t(C, Ti);   
+    Pi = Bez.n3.get_P_from_t(C, Ti);   
     
     % zerando termos que nao sao solucao
     if n < 3

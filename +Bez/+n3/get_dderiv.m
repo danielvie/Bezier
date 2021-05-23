@@ -1,6 +1,6 @@
 function [ddx, ddy] = get_dderiv(P, ti)
     
-    M    = Bez.get_M();
+    M    = Bez.n3.get_M();
     
     N    = numel(ti);
     T    = [ti ones(N, 1) zeros(N, 1) zeros(N, 1)];

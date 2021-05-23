@@ -1,7 +1,7 @@
 function [Ti, nroots] = get_t_from_C(C, vi, dire)
     
     % montando polinomio
-    M  = Bez.get_M();
+    M  = Bez.n3.get_M();
     
     P = M*C(:,dire);
     P(end) = P(end) - vi;

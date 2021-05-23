@@ -1,6 +1,6 @@
 function [dx, dy] = get_deriv(P, ti)
     
-    M    = Bez.get_M();
+    M    = Bez.n3.get_M();
     
     N    = numel(ti);
     T    = [ti.^2 ti ones(N, 1) zeros(N, 1)];

@@ -8,10 +8,10 @@ function C = fit(x, y)
 
     % montando T
     t = linspace(0,1,N);
-    T = Bez.get_T(t);
+    T = Bez.n3.get_T(t);
 
     % lendo M
-    M = Bez.get_M();
+    M = Bez.n3.get_M();
 
     % calculando coeficientes
     C = M\((T'*T)\T'*P);
